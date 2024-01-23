@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lesson1/src/ui/widget/button.dart';
 import 'package:lesson1/src/ui/widget/textform.dart';
 
 class MyForm extends StatelessWidget {
-  const MyForm({super.key});
+  const MyForm({super.key, this.register});
+  final bool? register;
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +14,17 @@ class MyForm extends StatelessWidget {
             const MyTextForm(
               labelText: "NAME",
             ),
+            if (register ?? false)
+              const MyTextForm(
+                labelText: "EMAIL",
+              ),
             const MyTextForm(
               labelText: "PASSWORD",
+              obscureText: true,
             ),
-            MyButton(
-              label: "Log in",
-              onPressed: () {},
-            )
           ]
               .map((e) => Padding(
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
                     child: e,
                   ))
               .toList()),
