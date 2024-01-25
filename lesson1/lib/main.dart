@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lesson1/src/routes.dart';
 import 'package:lesson1/src/ui/layout/my_layout.dart';
 import 'package:lesson1/src/ui/screen/my_screen.dart';
 import 'package:lesson1/src/ui/view/login.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MyApp());
 }
 
