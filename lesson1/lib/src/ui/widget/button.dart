@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, this.onPressed, required this.label});
+  const MyButton({super.key, this.onPressed, required this.label, this.loading});
   final VoidCallback? onPressed;
   final String label;
+  final bool? loading;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +16,15 @@ class MyButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: Text(
-          label,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+        child: loading! == true
+            ? const CircularProgressIndicator()
+            : Text(
+                label,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
               ),
-        ),
       ),
     );
   }

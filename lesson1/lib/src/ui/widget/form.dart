@@ -14,6 +14,13 @@ class MyForm extends StatefulWidget {
 
 class _MyFormState extends State<MyForm> {
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
+
+  void mockSubmit() async {
+    await Future.delayed(const Duration(seconds: 1));
+    loading = false;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +46,15 @@ class _MyFormState extends State<MyForm> {
               padding: const EdgeInsets.only(top: 16),
               child: MyButton(
                 label: widget.buttonLabel,
+                loading: loading,
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("ERROR")));
+                    setState(() {
+                      loading = true;
+                    });
+                    mockSubmit();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Errors in your form")));
                   }
                 },
               ),
