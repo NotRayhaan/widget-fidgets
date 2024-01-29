@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lesson1/src/ui/widget/button.dart';
 import 'package:lesson1/src/ui/widget/textform.dart';
 
@@ -16,8 +17,10 @@ class _MyFormState extends State<MyForm> {
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
 
-  void mockSubmit() async {
-    await Future.delayed(const Duration(seconds: 1));
+  void mockSubmit(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 1), () {
+      context.go('/home');
+    });
     loading = false;
     setState(() {});
   }
@@ -30,14 +33,16 @@ class _MyFormState extends State<MyForm> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const MyTextForm(
+              helpText: "e",
               labelText: "NAME",
             ),
-            if (widget.register ?? false)
+            if (widget.register == true)
               const MyTextForm(
                 labelText: "EMAIL",
                 email: true,
               ),
             MyTextForm(
+              helpText: "e",
               labelText: "PASSWORD",
               obscureText: true,
               register: widget.register,
@@ -47,12 +52,12 @@ class _MyFormState extends State<MyForm> {
               child: MyButton(
                 label: widget.buttonLabel,
                 loading: loading,
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     setState(() {
                       loading = true;
                     });
-                    mockSubmit();
+                    mockSubmit(context);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Errors in your form")));
                   }

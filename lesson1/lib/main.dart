@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lesson1/src/routes.dart';
 import 'package:lesson1/src/ui/layout/my_layout.dart';
-import 'package:lesson1/src/ui/screen/my_screen.dart';
+import 'package:lesson1/src/ui/screen/authenticate.dart';
 import 'package:lesson1/src/ui/view/login.dart';
 
 void main() {
@@ -43,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const MainLayout(
-      screen: MyScreen(
-        view: LoginView(), // gorouter
+      screen: AuthScreen(
+        view: LoginView(),
       ),
     );
   }

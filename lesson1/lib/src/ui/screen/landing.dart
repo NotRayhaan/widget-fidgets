@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyScreen extends StatelessWidget {
-  const MyScreen({super.key, required this.view});
+class LandingScreen extends StatelessWidget {
+  const LandingScreen({super.key, required this.view});
   final Widget view;
 
   @override

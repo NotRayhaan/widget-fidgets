@@ -9,14 +9,14 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: onPressed,
+      onPressed: loading == true ? null : onPressed,
       style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(40),
           backgroundColor: Colors.black,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: loading! == true
+        child: loading == true
             ? const CircularProgressIndicator()
             : Text(
                 label,

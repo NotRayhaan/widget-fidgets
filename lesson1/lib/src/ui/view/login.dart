@@ -33,11 +33,13 @@ class LoginView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child:
-                Text("Forgot password?", style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white70)),
+            child: TextButton(
+                onPressed: () => context.go('/authenticate/forgot'),
+                child: Text('Forgot password?',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white70))),
           ),
           TextButton(
-              onPressed: () => context.go('/register'),
+              onPressed: () => context.go('/authenticate/register'),
               child: Text('Signup !', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white70)))
         ],
       ),
