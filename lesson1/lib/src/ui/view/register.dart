@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lesson1/src/ui/widget/background.dart';
-import 'package:lesson1/src/ui/widget/button.dart';
 import 'package:lesson1/src/ui/widget/form.dart';
 
 class RegisterView extends StatelessWidget {
@@ -28,16 +27,11 @@ class RegisterView extends StatelessWidget {
               onPressed: () => context.go('/'),
               child: Text('Already registered? Log in here',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70))),
-          const MyForm(
+          MyForm(
             register: true,
+            submit: () {},
+            buttonLabel: "Sign up",
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 40),
-            child: MyButton(
-              label: "Sign up",
-              onPressed: () {},
-            ),
-          )
         ],
       ),
     ));

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lesson1/src/ui/widget/background.dart';
-import 'package:lesson1/src/ui/widget/button.dart';
 import 'package:lesson1/src/ui/widget/form.dart';
 
 class LoginView extends StatelessWidget {
@@ -28,13 +27,9 @@ class LoginView extends StatelessWidget {
             child: Text("Sign in to continue",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70)),
           ),
-          const MyForm(),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: MyButton(
-              label: "Log in",
-              onPressed: () {},
-            ),
+          MyForm(
+            buttonLabel: "Log in",
+            submit: () {},
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
