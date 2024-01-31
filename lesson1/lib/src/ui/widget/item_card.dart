@@ -16,10 +16,11 @@ class ItemCard extends StatelessWidget {
         padding: const EdgeInsets.all(28),
         child: Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 16),
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
               child: CircleAvatar(
                 radius: 32,
+                child: Text(crypto.name[0]),
               ),
             ),
             Column(
