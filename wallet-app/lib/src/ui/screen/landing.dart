@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lesson1/src/ui/view/compass.dart';
 import 'package:lesson1/src/ui/view/dashboard.dart';
+import 'package:lesson1/src/ui/widget/drawer.dart';
 import 'package:lesson1/src/ui/view/home.dart';
 import 'package:lesson1/src/ui/view/notifications.dart';
 import 'package:lesson1/src/ui/view/settings.dart';
@@ -21,8 +22,8 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
-        leading: const DrawerButtonIcon(),
         title: Row(
           children: [
             const Padding(
@@ -43,7 +44,9 @@ class _LandingScreenState extends State<LandingScreen> {
         ],
       ),
       body: Center(child: _viewList.elementAt(_currentIndex)),
-      backgroundColor: Colors.black12,
+      drawer: const Drawer(
+        child: DrawerView(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
