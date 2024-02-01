@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lesson1/src/ui/widget/expanded_card.dart';
-import 'package:lesson1/src/ui/widget/crypto_card.dart';
-import 'package:lesson1/src/ui/widget/transfer_card.dart';
+import 'package:wallet_app/src/ui/widget/expanded_card.dart';
+import 'package:wallet_app/src/ui/widget/crypto_card.dart';
+import 'package:wallet_app/src/ui/widget/transfer_card.dart';
 
 List<Crypto> cryptos = [
   const Crypto("Bitcoin", 25.895325, 8.89, 89.759, 4.89),

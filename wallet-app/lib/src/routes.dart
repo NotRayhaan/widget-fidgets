@@ -1,17 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lesson1/src/ui/layout/my_layout.dart';
-import 'package:lesson1/src/ui/screen/authenticate.dart';
-import 'package:lesson1/src/ui/screen/landing.dart';
-import 'package:lesson1/src/ui/view/compass.dart';
-import 'package:lesson1/src/ui/view/dashboard.dart';
-import 'package:lesson1/src/ui/view/forgot_password.dart';
-import 'package:lesson1/src/ui/view/home.dart';
-import 'package:lesson1/src/ui/view/login.dart';
-import 'package:lesson1/src/ui/view/notifications.dart';
-import 'package:lesson1/src/ui/view/register.dart';
-import 'package:lesson1/src/ui/view/settings.dart';
+import 'package:wallet_app/src/ui/layout/my_layout.dart';
+import 'package:wallet_app/src/ui/screen/authenticate.dart';
+import 'package:wallet_app/src/ui/screen/landing.dart';
+import 'package:wallet_app/src/ui/view/compass.dart';
+import 'package:wallet_app/src/ui/view/dashboard.dart';
+import 'package:wallet_app/src/ui/view/forgot_password.dart';
+import 'package:wallet_app/src/ui/view/home.dart';
+import 'package:wallet_app/src/ui/view/login.dart';
+import 'package:wallet_app/src/ui/view/notifications.dart';
+import 'package:wallet_app/src/ui/view/register.dart';
+import 'package:wallet_app/src/ui/view/settings.dart';
 
-final router = GoRouter(routes: [
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
+final router = GoRouter(navigatorKey: _rootNavigatorKey, routes: [
   GoRoute(
     path: '/',
     builder: (context, state) => const MainLayout(
@@ -34,39 +38,29 @@ final router = GoRouter(routes: [
               view: ForgotPasswordView(),
             ),
           )),
-  GoRoute(
-      path: '/home',
-      builder: (context, state) => const MainLayout(
-            screen: LandingScreen(
-              view: HomeView(),
-            ),
-          )),
-  GoRoute(
-      path: '/dashboard',
-      builder: (context, state) => const MainLayout(
-            screen: LandingScreen(
-              view: DashboardView(),
-            ),
-          )),
-  GoRoute(
-      path: '/compass',
-      builder: (context, state) => const MainLayout(
-            screen: LandingScreen(
-              view: CompassView(),
-            ),
-          )),
-  GoRoute(
-      path: '/notifications',
-      builder: (context, state) => const MainLayout(
-            screen: LandingScreen(
-              view: NotificationsView(),
-            ),
-          )),
-  GoRoute(
-      path: '/settings',
-      builder: (context, state) => const MainLayout(
-            screen: LandingScreen(
-              view: SettingsView(),
-            ),
-          ))
+  ShellRoute(
+      navigatorKey: _shellNavigatorKey,
+      builder: (context, state, child) => MainLayout(screen: LandingScreen(view: child)),
+      routes: [
+        GoRoute(
+          path: '/home',
+          builder: (context, state) => const HomeView(),
+        ),
+        GoRoute(
+          path: '/dashboard',
+          builder: (context, state) => const DashboardView(),
+        ),
+        GoRoute(
+          path: '/compass',
+          builder: (context, state) => const CompassView(),
+        ),
+        GoRoute(
+          path: '/notifications',
+          builder: (context, state) => const NotificationsView(),
+        ),
+        GoRoute(
+          path: '/settings',
+          builder: (context, state) => const SettingsView(),
+        )
+      ])
 ]);

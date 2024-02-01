@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lesson1/src/ui/view/compass.dart';
-import 'package:lesson1/src/ui/view/dashboard.dart';
-import 'package:lesson1/src/ui/widget/drawer.dart';
-import 'package:lesson1/src/ui/view/home.dart';
-import 'package:lesson1/src/ui/view/notifications.dart';
-import 'package:lesson1/src/ui/view/settings.dart';
+import 'package:go_router/go_router.dart';
+import 'package:wallet_app/src/ui/view/compass.dart';
+import 'package:wallet_app/src/ui/view/dashboard.dart';
+import 'package:wallet_app/src/ui/widget/drawer.dart';
+import 'package:wallet_app/src/ui/view/home.dart';
+import 'package:wallet_app/src/ui/view/notifications.dart';
+import 'package:wallet_app/src/ui/view/settings.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key, required this.view});
@@ -17,7 +18,30 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   int _currentIndex = 0;
 
-  static const _viewList = <Widget>[HomeView(), DashboardView(), CompassView(), NotificationsView(), SettingsView()];
+  // static const _viewList = <Widget>[HomeView(), DashboardView(), CompassView(), NotificationsView(), SettingsView()];
+
+  void handleNavIndex(int index) {
+    switch (index) {
+      case 0:
+        context.go('/home');
+        break;
+      case 1:
+        context.go('/dashboard');
+        break;
+      case 2:
+        context.go('/compass');
+        break;
+      case 3:
+        context.go('/notifications');
+        break;
+      case 4:
+        context.go('/settings');
+        break;
+      default:
+        context.go('/home');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +67,7 @@ class _LandingScreenState extends State<LandingScreen> {
           )
         ],
       ),
-      body: Center(child: _viewList.elementAt(_currentIndex)),
+      body: Center(child: widget.view),
       drawer: const Drawer(
         child: DrawerView(),
       ),
@@ -51,6 +75,7 @@ class _LandingScreenState extends State<LandingScreen> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
+            handleNavIndex(index);
             _currentIndex = index;
           });
         },

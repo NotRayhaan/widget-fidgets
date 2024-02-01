@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lesson1/src/ui/view/home.dart';
+import 'package:wallet_app/src/ui/view/home.dart';
 
 class ExpandedCard extends StatefulWidget {
   const ExpandedCard({super.key, required this.myBalance});

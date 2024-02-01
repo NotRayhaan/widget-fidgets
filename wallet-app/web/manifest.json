@@ -1,6 +1,6 @@
 {
-    "name": "lesson1",
-    "short_name": "lesson1",
+    "name": "wallet_app",
+    "short_name": "wallet_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

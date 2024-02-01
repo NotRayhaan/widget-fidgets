@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lesson1/src/routes.dart';
-import 'package:lesson1/src/ui/layout/my_layout.dart';
-import 'package:lesson1/src/ui/screen/authenticate.dart';
-import 'package:lesson1/src/ui/view/login.dart';
+import 'package:wallet_app/src/routes.dart';
+import 'package:wallet_app/src/ui/layout/my_layout.dart';
+import 'package:wallet_app/src/ui/screen/authenticate.dart';
+import 'package:wallet_app/src/ui/view/login.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

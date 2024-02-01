@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lesson1/src/ui/widget/background.dart';
-import 'package:lesson1/src/ui/widget/form.dart';
+import 'package:wallet_app/src/ui/widget/background.dart';
+import 'package:wallet_app/src/ui/widget/form.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({

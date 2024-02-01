@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lesson1/src/ui/widget/button.dart';
-import 'package:lesson1/src/ui/widget/textform.dart';
+import 'package:wallet_app/src/ui/widget/button.dart';
+import 'package:wallet_app/src/ui/widget/textform.dart';
 
 class MyForm extends StatefulWidget {
   const MyForm({super.key, this.register, required this.buttonLabel, required this.submit});
